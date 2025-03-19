@@ -6,8 +6,8 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 const navigation = [
-  { name: "A Empresa", href: "#" },
-  { name: "Serviços", href: "#" },
+  { name: "About Us", href: "#" },
+  { name: "Services", href: "#" },
 ];
 
 export default function Header() {
@@ -68,16 +68,22 @@ export default function Header() {
             >
               {item.name}
               {/* Hover effect: 3 stripes */}
-              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-green-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></div>
+              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></div>
             </a>
           ))}
           <a
             href="#"
             className="text-sm/6 font-semibold text-gray-900 relative group"
           >
-            Contacto <span aria-hidden="true">&rarr;</span>
+            Contact Us 
+            <span
+                        aria-hidden="true"
+                        className="inline-block transition-transform duration-300 ease-in-out group-hover:translate-x-2"
+                      >
+                        →
+                      </span>
             {/* Hover effect: 3 stripes */}
-            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-green-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></div>
+            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></div>
           </a>
         </div>
       </nav>

@@ -106,9 +106,9 @@ export default function Footer() {
             <div className="md:grid md:grid-cols-3 md:gap-8">
               <div>
                 <h3 className="text-sm/6 font-semibold text-gray-900">
-                  Enderenço
+                  Address
                 </h3>
-                <ul role="list" className="mt-6 space-y-4">
+                <ul role="list" className="mt-1 space-y-4">
                   {navigation.solutions.map((item) => (
                     <li key={item.name}>
                       <a
@@ -123,9 +123,9 @@ export default function Footer() {
               </div>
               <div className="mt-10 md:mt-0">
                 <h3 className="text-sm/6 font-semibold text-gray-900">
-                  Numero de Telefone
+                  Phone
                 </h3>
-                <ul role="list" className="mt-6 space-y-4">
+                <ul role="list" className="mt-1 space-y-4">
                   {navigation.support.map((item) => (
                     <li key={item.name}>
                       <a
@@ -140,7 +140,7 @@ export default function Footer() {
               </div>
               <div>
                 <h3 className="text-sm/6 font-semibold text-gray-900">Email</h3>
-                <ul role="list" className="mt-6 space-y-4">
+                <ul role="list" className="mt-1 space-y-4">
                   {navigation.company.map((item) => (
                     <li key={item.name}>
                       <a
