@@ -8,7 +8,7 @@ import Contact from "./components/Homepage/Contact";
 export default function Home() {
   return (
     <>
-    <div className="bg-white px-6 py-24 sm:py-32 lg:px-8">
+    <div className="bg-white px-6 py-16 sm:py-20 lg:px-8">
       <div className="mx-auto max-w-3xl text-center">
         <div className="flex items-center justify-center">
           <Image
