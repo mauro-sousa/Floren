@@ -2,6 +2,8 @@ import Image from "next/image";
 import HomeCTA from "./components/Homepage/CTAImage";
 import Logo from "./components/Homepage/Logo";
 import Services from "./components/Homepage/Services";
+import Mission from "./components/Homepage/Mission";
+import Contact from "./components/Homepage/Contact";
 
 export default function Home() {
   return (
@@ -29,6 +31,8 @@ export default function Home() {
     </div>
     <HomeCTA/>
     <Services/>
+    <Mission/>
+    <Contact/>
     </>
   );
 }
