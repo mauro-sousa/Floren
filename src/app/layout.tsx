@@ -15,16 +15,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Evolution Technologies - Redes e Soluções Inovadoras",
+  title: "FLORENTEK Engineering",
   description:
-    "Evolution Technologies Lda. oferece serviços de Redes e Soluções com uma equipe altamente qualificada, garantindo excelência e inovação para seu projeto.",
+    "Com uma equipe vibrante e qualificada, representamos um futuro mais brilhante, promovendo avanços que atendem às crescentes demandas de nossos clientes.",
   openGraph: {
-    title: "Evolution Technologies - Redes e Soluções Inovadoras",
+    title: "FLORENTEK Engineering",
     description:
-      "Soluções de redes e tecnologia da Evolution Technologies para seu projeto, com uma equipe experiente e qualificada em Angola.",
+      "Fornecemos serviços industriais integrados, incluindo engenharia e design de instrumentação, sistemas elétricos, de controle e segurança.",
     type: "website",
-    siteName: "Evolution Technologies",
-    url: "https://www.evolutiontech.co.ao",
+    siteName: "FLORENTEK Engineering",
+    url: "https://www.florentek.co.ao",
     images: [
       {
         url: "https://evolution-rho.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2F1.a63b1321.png&w=1920&q=75",
@@ -33,15 +33,15 @@ export const metadata: Metadata = {
         type: "image/png",
         width: 1200,
         height: 630,
-        alt: "Homepage da Evolution Technologies - Redes e Soluções",
+        alt: "FLORENTEK Engineering Website",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Evolution Technologies - Redes e Soluções Inovadoras",
+    title: "FLORENTEK Engineering",
     description:
-      "Evolution Technologies oferece soluções inovadoras em redes e TI para seu projeto.",
+      "Fornecemos serviços industriais integrados, incluindo engenharia e design de instrumentação, sistemas elétricos, de controle e segurança.",
     images: [
       "https://evolution-rho.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2F1.a63b1321.png&w=1920&q=75",
     ],
@@ -51,8 +51,8 @@ export const metadata: Metadata = {
     initialScale: 1,
   },
   icons: {
-    icon: "../Assets/favicon_io/favicon.ico",
-    apple: "../Assets/favicon_io/apple-touch-icon.png",
+    icon: "/icon_Primary1.png",
+    apple: "/icon_Primary1.png",
   },
 };
 
