@@ -12,7 +12,7 @@ export default function Example() {
             <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
               Get in touch
             </h2>
-            <h3 className="">
+            <h3 className="text-gray-800">
               Whether you have a question about our services, need assistance
               with a project, or want to explore collaboration opportunities,
               our team is here to help.
