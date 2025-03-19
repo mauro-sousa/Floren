@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     url: "https://www.florentek.co.ao",
     images: [
       {
-        url: "https://evolution-rho.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2F1.a63b1321.png&w=1920&q=75",
+        url: "https://floren-ruby.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FScreen.bb5c1550.png&w=1920&q=75",
         secureUrl:
-          "https://evolution-rho.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2F1.a63b1321.png&w=1920&q=75",
+          "https://floren-ruby.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FScreen.bb5c1550.png&w=1920&q=75",
         type: "image/png",
         width: 1200,
         height: 630,
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     description:
       "Fornecemos serviços industriais integrados, incluindo engenharia e design de instrumentação, sistemas elétricos, de controle e segurança.",
     images: [
-      "https://evolution-rho.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2F1.a63b1321.png&w=1920&q=75",
+      "https://floren-ruby.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FScreen.bb5c1550.png&w=1920&q=75",
     ],
   },
   viewport: {
