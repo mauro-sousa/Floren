@@ -6,7 +6,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 const navigation = [
-  { name: "About Us", href: "#" },
+  { name: "About Us", href: "/AboutUs" },
   { name: "Services", href: "#" },
 ];
 
@@ -39,7 +39,7 @@ export default function Header() {
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-between p-2 lg:px-8"
       >
-        <a href="#" className="-m-1.5 p-1.5">
+        <Link href="/" className="-m-1.5 p-1.5">
           <span className="sr-only">Your Company</span>
           <Image
             src={"/icon_Primary1.png"}
@@ -48,7 +48,7 @@ export default function Header() {
             alt="Logo Image"
             className="object-center h-auto w-20"
           />
-        </a>
+        </Link>
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -72,16 +72,16 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="#"
+            href="/Contact"
             className="text-sm/6 font-semibold text-gray-900 relative group"
           >
-            Contact Us 
+            Contact Us
             <span
-                        aria-hidden="true"
-                        className="inline-block transition-transform duration-300 ease-in-out group-hover:translate-x-2"
-                      >
-                        →
-                      </span>
+              aria-hidden="true"
+              className="inline-block transition-transform duration-300 ease-in-out group-hover:translate-x-2"
+            >
+              →
+            </span>
             {/* Hover effect: 3 stripes */}
             <div className="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></div>
           </a>
