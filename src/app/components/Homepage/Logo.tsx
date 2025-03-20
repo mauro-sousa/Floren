@@ -19,10 +19,10 @@ export default function Partnerlogo() {
           <div className="col-span-1 flex justify-center lg:col-span-1">
             <Image
               alt="Reform"
-              src="/SGS.jpg"
+              src="/IRS_logo.png"
               width={158}
               height={48}
-              className="max-h-16 w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+              className="max-h-12 w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
             />
           </div>
         </div>
