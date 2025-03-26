@@ -118,6 +118,43 @@ export default function Example() {
                   defaultValue={""}
                 />
               </div>
+
+              <div className="mx-0 mb-1 sm:mb-3">
+                <span className="pb-1 text-xs uppercase tracking-wider">
+                  What is the reason for your contact?
+                </span>
+                <div className="flex flex-wrap gap-4">
+                  {/* Radio Group - all inputs should share the same name */}
+                  {[
+                    {
+                      id: "general",
+                      value: "General inquiries",
+                      defaultChecked: true,
+                    },
+                    { id: "technical", value: "Technical help" },
+                    { id: "proposals", value: "Proposals" },
+                    { id: "others", value: "Others" },
+                  ].map((option) => (
+                    <div key={option.id} className="flex items-center">
+                      <input
+                        id={option.id}
+                        type="radio"
+                        name="contactType" // Same name for all radio buttons
+                        value={option.value}
+                        defaultChecked={option.defaultChecked}
+                        className="h-4 w-4 cursor-pointer text-indigo-600 focus:ring-indigo-500"
+                      />
+                      <label
+                        htmlFor={option.id}
+                        className="ml-2 text-sm font-medium text-gray-700"
+                      >
+                        {option.value}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <div>
                 <button
                   type="submit"
