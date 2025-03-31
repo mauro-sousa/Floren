@@ -74,46 +74,59 @@ export default function Example() {
                   id="full-name"
                   name="full-name"
                   type="text"
-                  placeholder="Full name"
+                  placeholder="Full Name"
                   autoComplete="name"
                   className="block w-full rounded-md border border-gray-300 px-4 py-3 placeholder-gray-500 shadow-xs focus:border-green-500 focus:ring-green-500"
                 />
               </div>
               <div>
+                <label htmlFor="Entity" className="sr-only">
+                  Organization
+                </label>
+                <input
+                  id="Entity"
+                  name="Entity"
+                  type="text"
+                  placeholder="Organization Name"
+                  autoComplete="organization"
+                  className="block w-full rounded-md border border-gray-300 px-4 py-3 placeholder-gray-500 shadow-xs focus:border-green-500 focus:ring-green-500"
+                />
+              </div>
+              <div>
                 <label htmlFor="email" className="sr-only">
-                  Email
+                  Business Email
                 </label>
                 <input
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="Email"
+                  placeholder="Corporate Email Address"
                   autoComplete="email"
                   className="block w-full rounded-md border border-gray-300 px-4 py-3 placeholder-gray-500 shadow-xs focus:border-green-500 focus:ring-green-500"
                 />
               </div>
               <div>
                 <label htmlFor="phone" className="sr-only">
-                  Phone
+                  Direct Line
                 </label>
                 <input
                   id="phone"
                   name="phone"
                   type="text"
-                  placeholder="Phone"
+                  placeholder="Direct Phone Line"
                   autoComplete="tel"
                   className="block w-full rounded-md border border-gray-300 px-4 py-3 placeholder-gray-500 shadow-xs focus:border-green-500 focus:ring-green-500"
                 />
               </div>
               <div>
                 <label htmlFor="message" className="sr-only">
-                  Message
+                  Inquiry Details
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   rows={4}
-                  placeholder="Message"
+                  placeholder="Nature of Your Business Inquiry"
                   className="block w-full rounded-md border border-gray-300 px-4 py-3 placeholder-gray-500 shadow-xs focus:border-green-500 focus:ring-green-500"
                   defaultValue={""}
                 />
@@ -121,25 +134,24 @@ export default function Example() {
 
               <div className="mx-0 mb-1 sm:mb-3">
                 <span className="pb-1 text-xs uppercase tracking-wider">
-                  What is the reason for your contact?
+                  Purpose of Communication
                 </span>
                 <div className="flex flex-wrap gap-4">
-                  {/* Radio Group - all inputs should share the same name */}
                   {[
                     {
                       id: "general",
-                      value: "General inquiries",
+                      value: "Executive Inquiry",
                       defaultChecked: true,
                     },
-                    { id: "technical", value: "Technical help" },
-                    { id: "proposals", value: "Proposals" },
-                    { id: "others", value: "Others" },
+                    { id: "technical", value: "Technical Consultation" },
+                    { id: "proposals", value: "Partnership Proposal" },
+                    { id: "procurement", value: "Procurement Inquiry" },
                   ].map((option) => (
                     <div key={option.id} className="flex items-center">
                       <input
                         id={option.id}
                         type="radio"
-                        name="contactType" // Same name for all radio buttons
+                        name="contactType"
                         value={option.value}
                         defaultChecked={option.defaultChecked}
                         className="h-4 w-4 cursor-pointer text-indigo-600 focus:ring-indigo-500"
@@ -160,7 +172,7 @@ export default function Example() {
                   type="submit"
                   className="inline-flex justify-center rounded-md border border-transparent bg-green-600 px-6 py-2 text-base font-medium text-white shadow-xs hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-hidden transform transition-all duration-300 hover:scale-105 active:scale-95 active:animate-pulse"
                 >
-                  Send Query
+                  Submit Inquiry
                 </button>
               </div>
             </form>

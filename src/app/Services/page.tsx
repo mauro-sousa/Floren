@@ -42,7 +42,7 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Contact form and details section */}
+        {/* details section */}
         <Service />
       </div>
     </>

@@ -16,22 +16,22 @@ const features = [
   {
     name: "Maintenance Services",
     description:
-      "Testing, calibration, and certification of safety-critical instruments, functional testing of SIS, Fire & Gas compliance, and preventative/corrective maintenance programs, including turnaround services for onshore and offshore facilities to ensure operational reliability and regulatory compliance.",
-    href: "/Services",
+      "We execute precise calibration, rigorous certification, and thorough functional testing of critical safety instruments, ensuring optimal reliability and regulatory compliance across assets.",
+    href: "/Services/Maintenance",
     icon: CloudArrowUpIcon,
   },
   {
     name: "Specialized Manpower Services",
     description:
-      "Skilled and certified personnel for Oil & Gas operations, along with training and mentoring programs to develop a competent local workforce.",
-    href: "/Services",
+      "We supply highly skilled, certified, and experienced technical personnel with proven track records, tailored specifically for reliable support in demanding Oil & Gas industry operations.",
+    href: "/Services/SpecializedManpower",
     icon: ArrowPathIcon,
   },
   {
     name: "Engineering & Project Management",
     description:
-      "Comprehensive support in design, construction, commissioning, project planning, execution, and technical advisory to optimize performance and address operational challenges.",
-    href: "/Services",
+      "We offer expert engineering design, robust construction oversight, and precise project management, ensuring successful delivery and seamless commissioning of complex energy sector projects.",
+    href: "/Services/ProjectManagement",
     icon: ArrowPathIcon,
   },
   // {
@@ -44,8 +44,8 @@ const features = [
   {
     name: "Operational Asset Management",
     description:
-      "Integrated solutions for asset efficiency, safety, and profitability, including medium-term strategies to manage underperforming assets in line with international standards.",
-    href: "/Services",
+      "Our strategic management services maximize operational efficiency, enhance safety standards, and optimize profitability, aligning underperforming assets with international best practices.",
+    href: "/Services/OperationalAsset",
     icon: ArrowPathIcon,
   },
 
