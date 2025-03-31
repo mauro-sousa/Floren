@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
 import { CheckIcon } from "@heroicons/react/20/solid";
 
 const features = [
@@ -24,25 +23,6 @@ const features = [
 ];
 
 export default function MS() {
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.pageYOffset;
-      const background = document.querySelector(
-        ".parallax-background"
-      ) as HTMLElement;
-      const content = document.querySelector(
-        ".parallax-content"
-      ) as HTMLElement;
-
-      if (background && content) {
-        background.style.transform = `translateY(${scrollPosition * 0.5}px)`;
-        content.style.transform = `translateY(${scrollPosition * 0.3}px)`;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen w-full overflow-x-hidden">
