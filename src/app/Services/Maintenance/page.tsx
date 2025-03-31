@@ -7,23 +7,19 @@ import { CheckIcon } from "@heroicons/react/20/solid";
 const features = [
   {
     name: "Improved asset performance",
-    description:
-      "Maximizes equipment efficiency and output quality",
+    description: "Maximizes equipment efficiency and output quality",
   },
   {
     name: "Minimized operational downtime",
-    description:
-      "Reducing interruptions for continuous productivity",
+    description: "Reducing interruptions for continuous productivity",
   },
   {
     name: "Enhanced compliance",
-    description:
-      "Ensures adherence to industry regulations standards",
+    description: "Ensures adherence to industry regulations standards",
   },
   {
     name: "Extensive expertise",
-    description:
-      "Decades of specialized knowledge and technical proficiency",
+    description: "Decades of specialized knowledge and technical proficiency",
   },
 ];
 
@@ -31,8 +27,12 @@ export default function MS() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.pageYOffset;
-      const background = document.querySelector('.parallax-background') as HTMLElement;
-      const content = document.querySelector('.parallax-content') as HTMLElement;
+      const background = document.querySelector(
+        ".parallax-background"
+      ) as HTMLElement;
+      const content = document.querySelector(
+        ".parallax-content"
+      ) as HTMLElement;
 
       if (background && content) {
         background.style.transform = `translateY(${scrollPosition * 0.5}px)`;
@@ -47,30 +47,22 @@ export default function MS() {
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen w-full overflow-x-hidden">
       {/* Full-screen image with dark overlay */}
-      <div className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+      <div className="relative h-screen w-full flex items-center justify-center">
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/50 z-10"></div>
 
-        {/* Background image with parallax */}
-        <div className="parallax-background absolute inset-0 flex items-center justify-center">
-          <Image
-            alt="Background"
-            src="https://images.pexels.com/photos/6754758/pexels-photo-6754758.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
+        {/* Background image */}
+        <Image
+          alt="Background"
+          src="https://images.pexels.com/photos/6754758/pexels-photo-6754758.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          fill
+          className="object-cover"
+          priority
+        />
 
-        {/* Centered content with parallax */}
-        <div
-          className="parallax-content absolute inset-0 flex flex-col items-center justify-center z-20 text-center"
-          style={{
-            transform: "translateZ(0)",
-            willChange: "transform",
-          }}
-        >
-          <div className="transform transition-all duration-700 ease-out flex flex-col items-center">
+        {/* Centered content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 text-center">
+          <div className="flex flex-col items-center">
             <Image
               alt="Logo"
               src="/white_secondary.png"
@@ -85,7 +77,7 @@ export default function MS() {
           </div>
         </div>
 
-        {/* Centered breadcrumb navigation */}
+        {/* Breadcrumb navigation */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 text-white text-center w-full">
           <p className="text-sm inline-flex items-center justify-center space-x-2">
             <Link href="/" className="hover:bg-green-700 p-0.5">
@@ -108,11 +100,11 @@ export default function MS() {
             Strategically Developed Services
           </h2>
           <p className="mx-auto mt-6 max-w-5xl text-lg/7 text-pretty text-gray-600">
-            FLORENTEK&apos;s Maintenance Services are strategically developed to
-            precisely match our clients&apos; operational requirements in the
-            demanding Oil & Gas sector. We offer comprehensive maintenance
-            solutions, proactively designed to maximize equipment reliability,
-            safety, and regulatory compliance.
+            FLORENTEK Maintenance Services deliver comprehensive testing,
+            calibration, and certification for safety-critical instruments,
+            including functional testing of Safety Instrumented Systems (SIS),
+            Fire & Gas compliance, and preventative and corrective maintenance
+            programs.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <a
@@ -159,12 +151,12 @@ export default function MS() {
         <div className="relative mx-auto max-w-7xl py-24 sm:py-32 lg:px-8 lg:py-40">
           <div className="pr-6 pl-6 md:ml-auto md:w-2/3 md:pl-16 lg:w-1/2 lg:pr-0 lg:pl-16 xl:pl-16">
             <p className="mt-6 text-base/7 text-gray-50">
-              Our specialized services include meticulous calibration of
-              instruments, rigorous certification processes, and extensive
-              functional testing of critical safety instrumentation. By
-              employing industry-leading practices and advanced technical
-              methodologies, we ensure each instrument functions flawlessly,
-              adhering strictly to international quality and safety standards.
+              We specialize in turnaround services for both onshore and offshore
+              Oil & Gas facilities, ensuring consistent operational reliability
+              and strict adherence to regulatory standards. By employing
+              industry-leading practices and advanced technical methodologies,
+              we ensure each instrument functions flawlessly, adhering strictly
+              to international quality and safety standards.
             </p>
             <div className="mt-8">
               <a
@@ -186,7 +178,7 @@ export default function MS() {
         </div>
       </div>
 
-{/* Why us */}
+      {/* Why us */}
       <div className="bg-white py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-5">
@@ -200,7 +192,8 @@ export default function MS() {
               <p className="mt-6 text-base/6 text-gray-600">
                 Our team of certified specialists brings extensive expertise,
                 providing dependable solutions tailored to optimize your
-                operational reliability and effectiveness.
+                operational reliability and effectiveness. <br/>
+                Choose FLORENTEK for dependable and technically proficient maintenance services tailored to your operational needs.
               </p>
             </div>
             <dl className="col-span-3 grid grid-cols-1 gap-x-8 gap-y-10 text-base/7 text-gray-600 sm:grid-cols-2 lg:gap-y-16">
