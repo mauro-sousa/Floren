@@ -1,8 +1,72 @@
+"use client";
 import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
+import emailjs from "emailjs-com";
+import { useForm } from "react-hook-form";
+import React, { useState, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Contact() {
+  const [isVerified, setVerified] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null); // Store the token
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onSubmit = (data: any, event: any) => {
+    event.preventDefault();
+    if (!isVerified || !recaptchaToken) {
+      alert(
+        "Please verify that you are not a robot. / Verifique se você não é um robô."
+      );
+      return;
+    }
+
+    const templateParams = {
+      fullname: data?.fullname,
+      email: data?.email,
+      message: data?.message,
+      entity: data?.entity,
+      phone: data?.phone,
+      purpose: data?.purpose,
+      "g-recaptcha-response": recaptchaToken, // Include reCAPTCHA token
+    };
+    console.log(templateParams);
+
+    emailjs
+      .send(
+        "service_li5opsn",
+        "template_mcvir0j",
+        templateParams,
+        "KYRAk-Kw00yYqlNBH"
+      )
+      .then(
+        function (response) {
+          console.log("SUCCESS!", response.status, response.text);
+          alert("Hoooray, orcamento enviado com sucesso");
+          event.target.reset();
+
+          // Disappear in 3 secs
+          // setTimeout(() => {
+          //   setTimeOut(1)
+          // }, 3000)
+        },
+        function (error) {
+          alert(
+            "OOPs, algo deu errado... Tente novamente mais tarde ou entre em contato com geral@globus.co.ao"
+          );
+          console.log("FAILED...", error);
+        }
+      );
+  };
+
+  const form = useRef();
+
   return (
     <>
       <div className="relative py-10">
@@ -48,6 +112,7 @@ export default function Contact() {
             <div className="absolute inset-y-0 left-0 w-1/2 bg-green-50" />
           </div>
           <div className="relative mx-auto max-w-7xl lg:grid lg:grid-cols-5">
+            {/* left side */}
             <div className="bg-green-50 px-6 py-16 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
               <div className="mx-auto max-w-lg">
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
@@ -104,65 +169,75 @@ export default function Contact() {
                 </p>
               </div>
             </div>
+
+            {/* Contact form */}
             <div className="bg-white px-6 py-16 lg:col-span-3 lg:px-8 lg:py-24 xl:pl-12 shadow-lg">
               <div className="mx-auto max-w-lg lg:max-w-none">
                 <form
-                  action="#"
-                  method="POST"
+                  onSubmit={handleSubmit(onSubmit)}
+                  ref={form}
                   className="grid grid-cols-1 gap-y-6"
                 >
+                  {/* Full name */}
                   <div>
                     <label htmlFor="full-name" className="sr-only">
                       Full name
                     </label>
                     <input
-                      id="full-name"
-                      name="full-name"
+                      id="fullname"
                       type="text"
                       placeholder="Full Name"
                       autoComplete="name"
+                      {...register("fullname", { required: true })}
                       className="block w-full rounded-md border border-gray-300 px-4 py-3 placeholder-gray-500 shadow-xs focus:border-green-500 focus:ring-green-500"
                     />
                   </div>
+
+                  {/* Entity */}
                   <div>
                     <label htmlFor="Entity" className="sr-only">
                       Organization
                     </label>
                     <input
                       id="Entity"
-                      name="Entity"
                       type="text"
                       placeholder="Organization Name"
                       autoComplete="organization"
+                      {...register("entity", { required: true })}
                       className="block w-full rounded-md border border-gray-300 px-4 py-3 placeholder-gray-500 shadow-xs focus:border-green-500 focus:ring-green-500"
                     />
                   </div>
+
+                  {/* Email */}
                   <div>
                     <label htmlFor="email" className="sr-only">
                       Business Email
                     </label>
                     <input
                       id="email"
-                      name="email"
                       type="email"
                       placeholder="Corporate Email Address"
                       autoComplete="email"
+                      {...register("email", { required: true })}
                       className="block w-full rounded-md border border-gray-300 px-4 py-3 placeholder-gray-500 shadow-xs focus:border-green-500 focus:ring-green-500"
                     />
                   </div>
+
+                  {/* Phone */}
                   <div>
                     <label htmlFor="phone" className="sr-only">
                       Direct Line
                     </label>
                     <input
                       id="phone"
-                      name="phone"
                       type="text"
                       placeholder="Direct Phone Line"
                       autoComplete="tel"
+                      {...register("phone", { required: true })}
                       className="block w-full rounded-md border border-gray-300 px-4 py-3 placeholder-gray-500 shadow-xs focus:border-green-500 focus:ring-green-500"
                     />
                   </div>
+                  {/* Message */}
                   <div>
                     <label htmlFor="message" className="sr-only">
                       Inquiry Details
@@ -172,52 +247,86 @@ export default function Contact() {
                       name="message"
                       rows={4}
                       placeholder="Nature of Your Business Inquiry"
+                      {...register("message", { required: true })}
                       className="block w-full rounded-md border border-gray-300 px-4 py-3 placeholder-gray-500 shadow-xs focus:border-green-500 focus:ring-green-500"
                       defaultValue={""}
                     />
                   </div>
 
+                  {/* Purpose of Communication */}
                   <div className="mx-0 mb-1 sm:mb-3">
-                    <span className="pb-1 text-xs uppercase tracking-wider">
-                      Purpose of Communication
-                    </span>
+                    <label className="block pb-1 text-xs uppercase tracking-wider text-gray-700">
+                      Purpose of Communication *
+                    </label>
                     <div className="flex flex-wrap gap-4">
                       {[
                         {
-                          id: "general",
+                          id: "executive",
                           value: "Executive Inquiry",
-                          defaultChecked: true,
+                          description:
+                            "High-level business discussions and strategic inquiries",
                         },
-                        { id: "technical", value: "Technical Consultation" },
-                        { id: "proposals", value: "Partnership Proposal" },
-                        { id: "procurement", value: "Procurement Inquiry" },
+                        {
+                          id: "technical",
+                          value: "Technical Consultation",
+                          description:
+                            "Product specifications and technical support",
+                        },
+                        {
+                          id: "partnership",
+                          value: "Partnership Proposal",
+                          description: "Business collaboration opportunities",
+                        },
+                        {
+                          id: "procurement",
+                          value: "Procurement Inquiry",
+                          description: "Purchasing and supply chain questions",
+                        },
                       ].map((option) => (
-                        <div key={option.id} className="flex items-center">
+                        <div key={option.id} className="flex items-start">
                           <input
                             id={option.id}
                             type="radio"
-                            name="contactType"
                             value={option.value}
-                            defaultChecked={option.defaultChecked}
-                            className="h-4 w-4 cursor-pointer text-indigo-600 focus:ring-indigo-500"
+                            {...register("purpose", { required: true })}
+                            className="h-4 w-4 mt-1 cursor-pointer text-green-600 focus:ring-green-500"
                           />
                           <label
                             htmlFor={option.id}
-                            className="ml-2 text-sm font-medium text-gray-700"
+                            className="ml-2 text-sm text-gray-700"
                           >
-                            {option.value}
+                            <span className="font-medium">{option.value}</span>
+                            {/* <p className="text-xs text-gray-500 mt-1">
+                              {option.description}
+                            </p> */}
                           </label>
                         </div>
                       ))}
                     </div>
+                    {errors.purpose && (
+                      <p className="mt-1 text-sm text-red-600">
+                        Please select a purpose
+                      </p>
+                    )}
                   </div>
 
+                  {/* Button */}
                   <div>
+                    {/* reCAPTCHA component */}
+                    <ReCAPTCHA
+                      sitekey={"6LeINgYrAAAAAI3UfkOg-AZw1F3VgWeOPRCABuN5"}
+                      onChange={(value) => {
+                        setVerified(true);
+                        setRecaptchaToken(value); // Save the reCAPTCHA token
+                      }}
+                      className="py-2"
+                      data-size="invisible"
+                    />
                     <button
                       type="submit"
                       className="inline-flex justify-center rounded-md border border-transparent bg-green-600 px-6 py-2 text-base font-medium text-white shadow-xs hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-hidden transform transition-all duration-300 hover:scale-105 active:scale-95 active:animate-pulse"
                     >
-                      Submit Inquiry
+                      Submit Inquiry{" "}
                     </button>
                   </div>
                 </form>
