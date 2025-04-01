@@ -6,9 +6,11 @@ import emailjs from "emailjs-com";
 import { useForm } from "react-hook-form";
 import React, { useState, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Contact() {
-  
+  const [isLoading, setIsLoading] = useState(false);
   const [isVerified, setVerified] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null); // Store the token
 
@@ -27,6 +29,7 @@ export default function Contact() {
       );
       return;
     }
+    setIsLoading(true); // Start loading
 
     const templateParams = {
       fullname: data?.fullname,
@@ -48,20 +51,42 @@ export default function Contact() {
       )
       .then(
         function (response) {
+          setIsLoading(false);
           console.log("SUCCESS!", response.status, response.text);
-          alert("Hoooray, orcamento enviado com sucesso");
+          toast.success("Inquiry sent successfully!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            style: {
+              background: "#16a34a", // green-600
+            },
+          });
           event.target.reset();
-
-          // Disappear in 3 secs
-          // setTimeout(() => {
-          //   setTimeOut(1)
-          // }, 3000)
         },
         function (error) {
-          alert(
-            "OOPs, algo deu errado... Tente novamente mais tarde ou entre em contato com geral@globus.co.ao"
-          );
+          setIsLoading(false);
           console.log("FAILED...", error);
+          toast.error(
+            "Submission failed. Please try again or contact geral@florentek.co.ao",
+            {
+              position: "top-center",
+              autoClose: 8000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+              style: {
+                background: "#dc2626", // red-600
+              },
+            }
+          );
         }
       );
   };
@@ -192,6 +217,11 @@ export default function Contact() {
                       {...register("fullname", { required: true })}
                       className="block w-full rounded-md border border-gray-300 px-4 py-3 placeholder-gray-500 shadow-xs focus:border-green-500 focus:ring-green-500"
                     />
+                    {errors.fullname && (
+                      <p className="mt-1 text-sm text-red-600">
+                        Please enter your name
+                      </p>
+                    )}
                   </div>
 
                   {/* Entity */}
@@ -207,6 +237,11 @@ export default function Contact() {
                       {...register("entity", { required: true })}
                       className="block w-full rounded-md border border-gray-300 px-4 py-3 placeholder-gray-500 shadow-xs focus:border-green-500 focus:ring-green-500"
                     />
+                    {errors.entity && (
+                      <p className="mt-1 text-sm text-red-600">
+                        Please enter your organization
+                      </p>
+                    )}
                   </div>
 
                   {/* Email */}
@@ -222,6 +257,11 @@ export default function Contact() {
                       {...register("email", { required: true })}
                       className="block w-full rounded-md border border-gray-300 px-4 py-3 placeholder-gray-500 shadow-xs focus:border-green-500 focus:ring-green-500"
                     />
+                    {errors.email && (
+                      <p className="mt-1 text-sm text-red-600">
+                        Please enter a business email address
+                      </p>
+                    )}
                   </div>
 
                   {/* Phone */}
@@ -237,8 +277,13 @@ export default function Contact() {
                       {...register("phone", { required: true })}
                       className="block w-full rounded-md border border-gray-300 px-4 py-3 placeholder-gray-500 shadow-xs focus:border-green-500 focus:ring-green-500"
                     />
+                    {errors.phone && (
+                      <p className="mt-1 text-sm text-red-600">
+                        Please insert a valid phone number
+                      </p>
+                    )}
                   </div>
-                  
+
                   {/* Message */}
                   <div>
                     <label htmlFor="message" className="sr-only">
@@ -252,6 +297,11 @@ export default function Contact() {
                       className="block w-full rounded-md border border-gray-300 px-4 py-3 placeholder-gray-500 shadow-xs focus:border-green-500 focus:ring-green-500"
                       defaultValue={""}
                     />
+                    {errors.message && (
+                      <p className="mt-1 text-sm text-red-600">
+                        Please Write an Inquiry
+                      </p>
+                    )}
                   </div>
 
                   {/* Purpose of Communication */}
@@ -325,9 +375,40 @@ export default function Contact() {
                     />
                     <button
                       type="submit"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-green-600 px-6 py-2 text-base font-medium text-white shadow-xs hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-hidden transform transition-all duration-300 hover:scale-105 active:scale-95 active:animate-pulse"
+                      disabled={isLoading}
+                      className={`inline-flex justify-center items-center rounded-md border border-transparent px-6 py-2 text-base font-medium text-white shadow-xs focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none transform transition-all duration-300 hover:scale-105 active:scale-95 ${
+                        isLoading
+                          ? "bg-green-700 cursor-not-allowed"
+                          : "bg-green-600 hover:bg-green-700"
+                      }`}
                     >
-                      Submit Inquiry{" "}
+                      {isLoading ? (
+                        <>
+                          <svg
+                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
+                          </svg>
+                          Processing...
+                        </>
+                      ) : (
+                        "Submit Inquiry"
+                      )}
                     </button>
                   </div>
                 </form>
@@ -335,6 +416,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
+        <ToastContainer />
       </div>
     </>
   );
