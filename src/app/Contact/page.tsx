@@ -8,6 +8,7 @@ import React, { useState, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Contact() {
+  
   const [isVerified, setVerified] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null); // Store the token
 
@@ -65,7 +66,7 @@ export default function Contact() {
       );
   };
 
-  const form = useRef();
+  const form = useRef<HTMLFormElement>(null);
 
   return (
     <>
@@ -237,6 +238,7 @@ export default function Contact() {
                       className="block w-full rounded-md border border-gray-300 px-4 py-3 placeholder-gray-500 shadow-xs focus:border-green-500 focus:ring-green-500"
                     />
                   </div>
+                  
                   {/* Message */}
                   <div>
                     <label htmlFor="message" className="sr-only">
@@ -244,7 +246,6 @@ export default function Contact() {
                     </label>
                     <textarea
                       id="message"
-                      name="message"
                       rows={4}
                       placeholder="Nature of Your Business Inquiry"
                       {...register("message", { required: true })}
