@@ -8,6 +8,7 @@ import React, { useState, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ShieldCheckIcon, ServerIcon } from "@heroicons/react/24/outline";
 
 export default function Contact() {
   const [isLoading, setIsLoading] = useState(false);
@@ -410,6 +411,29 @@ export default function Contact() {
                         "Submit Inquiry"
                       )}
                     </button>
+                    <div className="mt-4 text-xs text-gray-500">
+                      <p>
+                        🔒 Your information is kept confidential and used only
+                        for responding to your inquiry.
+                      </p>
+                      {/* Optional: Link to Privacy Policy */}
+                      {/* <p className="mt-1">
+                      Read our{" "}
+                      <Link href="/privacy-policy" className="text-green-600 hover:underline">
+      Privacy Policy
+    </Link>
+                    </p> */}
+                    </div>
+                  </div>
+                  <div className=" flex flex-wrap items-center gap-4 text-xs text-gray-500">
+                    <div className="flex items-center gap-1">
+                      <ShieldCheckIcon className="h-4 w-4 text-green-500" />
+                      <span>SSL Encrypted</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <ServerIcon className="h-4 w-4 text-green-500" />
+                      <span>EU Data Centers</span>
+                    </div>
                   </div>
                 </form>
               </div>
